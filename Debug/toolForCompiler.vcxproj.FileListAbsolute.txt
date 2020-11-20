@@ -1,0 +1,6 @@
+C:\Users\Marven\source\repos\toolForCompiler\Debug\toolForCompiler.exe
+C:\Users\Marven\source\repos\toolForCompiler\Debug\toolForCompiler.pdb
+C:\Users\fgh\Desktop\cpl\toolForCompiler\Debug\toolForCompiler.exe
+C:\Users\fgh\Desktop\cpl\toolForCompiler\Debug\toolForCompiler.pdb
+C:\Users\Marven\Desktop\Slides\toolForCompiler\Debug\toolForCompiler.exe
+C:\Users\Marven\Desktop\Slides\toolForCompiler\Debug\toolForCompiler.pdb

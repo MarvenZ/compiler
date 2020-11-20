@@ -1,0 +1,10 @@
+﻿  entry.cpp
+C:\Users\Marven\Desktop\Slides\toolForCompiler\entry.cpp(6,19): warning C4930: “FileProcesser i(void)”: 未调用原型函数(是否是有意用变量定义的?)
+  FileProcesser.cpp
+  lineProcesser.cpp
+  tools.cpp
+C:\Users\Marven\Desktop\Slides\toolForCompiler\tools.cpp(131,15): warning C4018: “<”: 有符号/无符号不匹配
+  wordProcesser.cpp
+  正在生成代码...
+C:\Users\Marven\Desktop\Slides\toolForCompiler\tools.cpp(106): warning C4715: “judge_findString”: 不是所有的控件路径都返回值
+  toolForCompiler.vcxproj -> C:\Users\Marven\Desktop\Slides\toolForCompiler\Debug\toolForCompiler.exe

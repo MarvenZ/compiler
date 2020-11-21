@@ -9,6 +9,8 @@ typedef const std::string& LINEOFCODE, TEXT;
 typedef std::string string;
 typedef enum tp
 {
+    LEOET,
+    GROET,
     ASSI,
     NUM,
     ID,
@@ -38,8 +40,8 @@ typedef enum tp
     LET,
     GRT,
     NEQ,
-    EQ
-
+    EQ,
+    COMMA
 }tokenType;
 
 

@@ -18,14 +18,15 @@ lineProcesser::lineProcesser(LINEOFCODE code)
     }
     else
     {
-        std::vector <string > saparatedCode(3);
+        std::vector <string > saparatedCode;
         string tempCode = eachLetterIndex(code, judge_findString, execute_spiltCodeByString);
+        tempCode.pop_back(); // remove the '\n' at the end of the line
 
         int markPos;
         while (markPos = tempCode.find_first_of('^'))
         {
             saparatedCode.push_back(tempCode.substr(0, markPos));
-            saparatedCode.push_back(tempCode.substr(markPos+1, tempCode.find_first_of('^',markPos+1)));
+            saparatedCode.push_back(tempCode.substr(markPos+1, tempCode.find_first_of('^',markPos+1) - markPos -1));
             tempCode = tempCode.substr(tempCode.find_first_of('^', markPos + 1));
         }
 
@@ -33,19 +34,20 @@ lineProcesser::lineProcesser(LINEOFCODE code)
         {
             formattedCode += str;
 
-            if (str[0] == '\"')
-                continue;
+            if (str[0] != '\"')
+            {
+                std::stringstream streamCode(str);
+                string word;
 
-            std::stringstream streamCode(str);
-            string word;
-
-            while (streamCode >> word)
-                words.push_back(wordProcesser(word));
+                while (streamCode >> word)
+                    words.push_back(wordProcesser(word));
+            }
+            else
+                words.push_back(wordProcesser(str));
+            
         }
 
     }
-
-    
 
 }
 

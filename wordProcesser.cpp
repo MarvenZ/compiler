@@ -9,6 +9,11 @@ wordProcesser::wordProcesser(LINEOFCODE word):
         type = tokenType::STRING;
     }
 
+    if (word[0] == ',')
+    {
+        type = tokenType::COMMA;
+    }
+
     if (isdigit(word[0]) )
     {
         type = tokenType::NUM;
@@ -38,18 +43,18 @@ wordProcesser::wordProcesser(LINEOFCODE word):
 
     if (word[0] == '<')
     {
-        type = tokenType::ADD;
+        type = tokenType::LET;
 
         if (word[1] == '=')
-            type = tokenType::LET;
+            type = tokenType::LEOET;
     }
 
     if (word[0] == '>')
     {
-        type = tokenType::ADD;
+        type = tokenType::GRT;
 
         if (word[1] == '=')
-            type = tokenType::GRT;
+            type = tokenType::GROET;
     }
 
     if (word[0] == '!' && word[1] == '=' )
@@ -72,6 +77,12 @@ wordProcesser::wordProcesser(LINEOFCODE word):
     {
         type = tokenType::SEMI;
     }
+
+    if (word[0] == ':')
+    {
+        type = tokenType::COL;
+    }
+
     if (word[0] == '(')
     {
         type = tokenType::LCUR;

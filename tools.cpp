@@ -2,7 +2,6 @@
 
 bool IsContextOfAStirng(LINEOFCODE line, int nLetterPos)
 {
-    bool isSingleQuotationOdd = false;
     bool isDoubleQuotationOdd = false;
     int pos = 0;
 
@@ -17,7 +16,7 @@ bool IsContextOfAStirng(LINEOFCODE line, int nLetterPos)
         pos++;
     }
 
-    return isSingleQuotationOdd || isDoubleQuotationOdd;
+    return isDoubleQuotationOdd;
 }
 
 string trim(LINEOFCODE sourse)
@@ -40,9 +39,9 @@ bool hasString(LINEOFCODE line)
 
 int findTheFirstNotInString(LINEOFCODE line, int beginPos, string target)
 {
-    int pos = line.find_first_of(target,beginPos);
+    int pos = line.find_first_of(target,beginPos+1);
     
-    while (IsContextOfAStirng(line, pos))
+    while (!IsContextOfAStirng(line, pos))
         pos = line.find_first_of(target, pos+target.size());
        
     return pos;
@@ -62,6 +61,11 @@ bool nextIs(LINEOFCODE code, int currentPos, TEXT c)
 std::ostream& operator << (std::ostream& os, tokenType c)
 {
     switch (c) {
+    case COMMA: os << "COMMA"; break;
+    case DEF: os << "DEF"; break;
+    case STRING: os << "STRING"; break;
+    case LEOET: os << "LEOET";    break;
+    case GROET: os << "GROET";    break;
     case LET: os << "LET";    break;
     case GRT: os << "GRT";    break;
     case EQ: os << "EQ";    break;
@@ -109,7 +113,8 @@ int judge_findOpera(string inputLine, int pos) // return the length of the opera
 int judge_findString(string inputLine, int pos)
 {
     if (inputLine[pos] == '\"')
-        return findTheFirstNotInString(inputLine, pos, "\"")-pos;
+        return findTheFirstNotInString(inputLine, pos, "\"") - pos;
+    else return 0;
 }
 
 bool execute_spiltCodeByString(string & inputLine, int & pos, int length)

@@ -20,38 +20,56 @@ wordProcesser::wordProcesser(LINEOFCODE word):
         type = tokenType::ID;
     }
 
-    if (word[0] == '\"')
+    if (isalpha(word[0]) )
     {
-        type = tokenType::STRING;
+        if (letterOper.find(word) != letterOper.end())
+            type = letterOper[word];
+        else
+            type = tokenType::ID;
+            
     }
-    if (word[0] == '\"')
+    if (word[0] == '+')
     {
-        type = tokenType::STRING;
+        type = tokenType::ADD;
     }
-    if (word[0] == '\"')
+    if (word[0] == '-')
     {
-        type = tokenType::STRING;
+        type = tokenType::SUB;
     }
-    if (word[0] == '\"')
+    if (word[0] == '*')
     {
-        type = tokenType::STRING;
+        type = tokenType::MUL;
     }
-    if (word[0] == '\"')
+    if (word[0] == '/')
     {
-        type = tokenType::STRING;
+        type = tokenType::MUL;
     }
-    if (word[0] == '\"')
+    if (word[0] == ';')
     {
-        type = tokenType::STRING;
+        type = tokenType::SEMI;
     }
-    if (word[0] == '\"')
+    if (word[0] == '(')
     {
-        type = tokenType::STRING;
+        type = tokenType::LCUR;
     }
-    if (word[0] == '\"')
+    if (word[0] == ')')
     {
-        type = tokenType::STRING;
+        type = tokenType::RCUR;
+    }
+    if (word[0] == '{')
+    {
+        type = tokenType::LBR;
+    }
+    if (word[0] == '}')
+    {
+        type = tokenType::RBR;
     }
 
 
+
+}
+
+tokenType wordProcesser::getType()
+{
+    return type;
 }

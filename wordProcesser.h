@@ -8,6 +8,6 @@ class wordProcesser
 
 public:
     wordProcesser(LINEOFCODE word);
-
+    tokenType getType();
 };
 

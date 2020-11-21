@@ -3,21 +3,21 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <map>
 
 typedef const std::string& LINEOFCODE, TEXT;
 typedef std::string string;
-
-const TEXT singleOper = "+ - *¡¡/ % > < ( ) [ ] :  ,  ; = !"; // '!' is not an operator
-const TEXT multiOper = ">= <= == !=";
-const TEXT letterOper = "and or not while if elif else return def"; //those operaters can't be indented arbitrarily
-
 typedef enum tp
 {
     NUM,
     ID,
     STRING,
     WHILE,
-    IF, ADD,
+    IF,
+    ELIF,
+    RETURN,
+    DEF,
+    ADD,
     SUB,
     MUL,
     DIV,
@@ -29,8 +29,29 @@ typedef enum tp
     LCUR,
     RCUR,
     EOFILE,
-    NEWLINE
+    NEWLINE,
+    AND,
+    OR,
+    NOT,
+
 }tokenType;
+
+
+const TEXT singleOper = "+-*/%><()[]:,;=!"; // '!' is not an operator
+const TEXT multiOper = "==>=<=!=";
+std::map <string, tokenType> letterOper = 
+{ 
+    {"and",tokenType::AND},
+    {"or",tokenType::OR },
+    {"not",tokenType::NOT},
+    {"while",tokenType::WHILE},
+    {"if",tokenType::IF},
+    {"elif", tokenType::ELIF},
+    {"return", tokenType::RETURN},
+    {"def", tokenType::DEF}
+}; //those operaters can't be indented arbitrarily
+
+
 
 bool nextIs(LINEOFCODE code, int currentPos, char c);
 
@@ -65,10 +86,10 @@ bool judge_returnTrue();
 
 int judge_findOpera(string inputLine, int pos); // return the length of the opera
 
-bool execute_insertBlank(string inputLine, int & pos, int length);
+bool execute_insertBlank(string & inputLine, int & pos, int length);
 
-bool execute_spiltCodeByString(string inputLine, int & pos, int length);
+bool execute_spiltCodeByString(string & inputLine, int & pos, int length);
 
 int judge_findString(string inputLine, int pos);
 
-string eachLetterIndex(LINEOFCODE code, int (*judgeFunc)(string inputLine, int judgePos), bool (*executeFunc)(string target, int & TargetPos, int exeLength), int currentPos = 0);
+string eachLetterIndex(LINEOFCODE code, int (*judgeFunc)(string inputLine, int judgePos), bool (*executeFunc)(string & target, int & TargetPos, int exeLength), int currentPos = 0);

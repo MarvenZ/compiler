@@ -11,5 +11,6 @@ class lineProcesser
 
 public:
     lineProcesser( LINEOFCODE code);
+    void printList(int numOfLine );
 };
 

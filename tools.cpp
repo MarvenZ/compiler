@@ -11,9 +11,6 @@ bool IsContextOfAStirng(LINEOFCODE line, int nLetterPos)
         if (pos == nLetterPos)
             break;
 
-        if (letter == '\'')
-            isSingleQuotationOdd = !isSingleQuotationOdd;
-
         if (letter == '\"')
             isDoubleQuotationOdd = !isDoubleQuotationOdd;
 
@@ -95,8 +92,8 @@ bool judge_returnTrue()
 
 int judge_findOpera(string inputLine, int pos) // return the length of the opera
 {
-    return 1 && (singleOper.find(inputLine[pos], pos) != singleOper.npos)
-        + 1 && (multiOper.find(inputLine[pos] + inputLine[pos + 1], pos) != multiOper.npos);
+    return  (singleOper.find(inputLine[pos]) != singleOper.npos) && 1
+        + (multiOper.find(inputLine[pos] + inputLine[pos + 1]) != multiOper.npos) && 1;
 }
 
 int judge_findString(string inputLine, int pos)
@@ -105,31 +102,32 @@ int judge_findString(string inputLine, int pos)
         return findTheFirstNotInString(inputLine, pos, "\"")-pos;
 }
 
-bool execute_spiltCodeByString(string inputLine, int & pos, int length)
+bool execute_spiltCodeByString(string & inputLine, int & pos, int length)
 {
-    inputLine.insert(pos + ++length, "^");
+    inputLine.insert(pos + length, "^");
     inputLine.insert(pos , "^");
 
-    pos += length;
+    pos += ++length;
     return true;
 }
 
-bool execute_insertBlank(string inputLine, int & pos, int length)
+bool execute_insertBlank(string & inputLine, int & pos, int length)
 {
-    inputLine.insert(pos + ++length, " "); // if insert at pos at first,it will change the position of the operater
+    inputLine.insert(pos + length, " "); // if insert at pos at first,it will change the position of the operater
     inputLine.insert(pos, " ");
 
-    pos += length;// 'point' at the blank following the operater after insert blank
+    pos += ++length;// 'point' at the blank following the operater after insert blank
     return true;
 }
 
-string eachLetterIndex(LINEOFCODE code, int (*judgeFunc)(string inputLine, int judgePos), bool (*executeFunc)(string target, int & TargetPos, int exeLength), int currentPos)
+string eachLetterIndex(LINEOFCODE code, int (*judgeFunc)(string inputLine, int judgePos), bool (*executeFunc)(string & target, int & TargetPos, int exeLength), int currentPos)
 {
     int i = currentPos;
     string tempCode = code.substr(currentPos);
+    int length = 0;
 
-    for (i; i < tempCode.size(); i++)
-        if (int length = judgeFunc(tempCode, i))
+    for (i; i < tempCode.size()-2; i++) //the last charactor is '\n' so don't need to take care
+        if (length = judgeFunc(tempCode, i))
             executeFunc(tempCode, i, length);
         
     return tempCode;

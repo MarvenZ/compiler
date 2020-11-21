@@ -1,9 +1,8 @@
-#include "tools.h"
 #include "FileProcesser.h"
 
 int main()
 {
-    FileProcesser i();
-
+    FileProcesser i("code.pym");
+    i.printResult();
     return 0;
 }

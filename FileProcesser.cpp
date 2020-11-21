@@ -2,7 +2,7 @@
 
 typedef std::ifstream pymFile;
 
-FileProcesser::FileProcesser(TEXT filePath = "code.pym")
+FileProcesser::FileProcesser(TEXT filePath )
 {
     pymFile sourseFile("code.pym",std::ios::in);
 
@@ -10,19 +10,43 @@ FileProcesser::FileProcesser(TEXT filePath = "code.pym")
 
     if (sourseFile)
     {
-        char letter;
+        string code;
 
-        while(sourseFile >> letter)
+        while(getline(sourseFile,code))
         {           
-            eachLine += letter;
-            if (letter == '\n' && !IsContextOfAStirng(eachLine, eachLine.size()))
+            for (auto letter : code+='\n')
             {
-                codeLines.push_back(lineProcesser(eachLine));
-                eachLine = "";
+                eachLine += letter;
+                if (letter == '\n' && !IsContextOfAStirng(eachLine, eachLine.size() - 1))
+                {
+                    codeLines.push_back(lineProcesser(eachLine));
+                    eachLine = "";
+                }
             }
+            
 
         }
 
     }
 
 }
+
+void FileProcesser::printResult()
+{
+    int numOfLine = 0;
+
+    for (auto line : codeLines)
+        line.printList(++numOfLine);
+
+}
+
+/*
+
+eachLine += letter;
+                if (letter == '\n' && !IsContextOfAStirng(eachLine, eachLine.size() - 1))
+                {
+                    codeLines.push_back(lineProcesser(eachLine));
+                    eachLine = "";
+                }
+
+*/

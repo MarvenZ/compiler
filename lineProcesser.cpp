@@ -3,11 +3,12 @@
 lineProcesser::lineProcesser(LINEOFCODE code)
 {
     indentNum = code.find_first_not_of(' ');
-    string line =  trim(code);
+    string line = trim(code);
     
     if (!hasString(line))
     {
         formattedCode = eachLetterIndex(code, judge_findOpera, execute_insertBlank);
+        formattedCode.pop_back(); // remove the '\n' at the end of the line
 
         std::stringstream streamCode(formattedCode);
         string word;
@@ -46,4 +47,13 @@ lineProcesser::lineProcesser(LINEOFCODE code)
 
     
 
+}
+
+void lineProcesser::printList(int numOfLine)
+{
+    if (indentNum != 0)
+        std::cout << numOfLine << " INDENT" << std::endl;
+
+    for (auto word : words)
+        std::cout << word.getType() << std::endl;
 }

@@ -4,7 +4,9 @@
 
 class FileProcesser
 {
-    FileProcesser(TEXT filePath);
     std::vector <lineProcesser> codeLines;
+public:
+    FileProcesser(TEXT filePath);
+    void printResult();
 };
 

@@ -2,7 +2,7 @@
 
 int main()
 {
-    FileProcesser i("code.pym");
-    i.printResult();
+    FileProcesser file("code.pym");
+    file.printResult();
     return 0;
 }

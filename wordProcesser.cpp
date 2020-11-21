@@ -17,6 +17,9 @@ wordProcesser::wordProcesser(LINEOFCODE word):
     if (word[0] == '=')
     {
         type = tokenType::ASSI;
+
+        if (word[1] == '=')
+            type = tokenType::EQ;
     }
 
     if (word[0] == '_')
@@ -33,9 +36,25 @@ wordProcesser::wordProcesser(LINEOFCODE word):
             
     }
 
-    if (word[0] == '+')
+    if (word[0] == '<')
     {
         type = tokenType::ADD;
+
+        if (word[1] == '=')
+            type = tokenType::LET;
+    }
+
+    if (word[0] == '>')
+    {
+        type = tokenType::ADD;
+
+        if (word[1] == '=')
+            type = tokenType::GRT;
+    }
+
+    if (word[0] == '!' && word[1] == '=' )
+    {
+        type = tokenType::NEQ;
     }
     if (word[0] == '-')
     {

@@ -1,4 +1,9 @@
-﻿  tools.cpp
-C:\Users\fgh\Desktop\ccc\compiler\tools.cpp(135,15): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\fgh\Desktop\ccc\compiler\tools.cpp(109): warning C4715: “judge_findString”: 不是所有的控件路径都返回值
+﻿  FileProcesser.cpp
+  entry.cpp
+  lineProcesser.cpp
+  tools.cpp
+C:\Users\fgh\Desktop\ccc\compiler\tools.cpp(139,15): warning C4018: “<”: 有符号/无符号不匹配
+  wordProcesser.cpp
+  正在生成代码...
+C:\Users\fgh\Desktop\ccc\compiler\tools.cpp(113): warning C4715: “judge_findString”: 不是所有的控件路径都返回值
   toolForCompiler.vcxproj -> C:\Users\fgh\Desktop\ccc\compiler\Debug\toolForCompiler.exe

@@ -62,6 +62,10 @@ bool nextIs(LINEOFCODE code, int currentPos, TEXT c)
 std::ostream& operator << (std::ostream& os, tokenType c)
 {
     switch (c) {
+    case LET: os << "LET";    break;
+    case GRT: os << "GRT";    break;
+    case EQ: os << "EQ";    break;
+    case NEQ: os << "NEQ";    break;
     case ASSI: os << "ASSI";    break;
     case AND: os << "AND";    break;
     case OR: os << "OR";    break;

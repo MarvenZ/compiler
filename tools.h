@@ -34,7 +34,11 @@ typedef enum tp
     AND,
     OR,
     NOT,
-    COL
+    COL,
+    LET,
+    GRT,
+    NEQ,
+    EQ
 
 }tokenType;
 

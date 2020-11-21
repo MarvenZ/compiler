@@ -37,7 +37,6 @@ void FileProcesser::printResult()
 
     for (auto line : codeLines)
         line.printList(++numOfLine);
-
 }
 
 /*

@@ -55,5 +55,5 @@ void lineProcesser::printList(int numOfLine)
         std::cout << numOfLine << " INDENT" << std::endl;
 
     for (auto word : words)
-        std::cout << word.getType() << std::endl;
+        std::cout << numOfLine << ' ' << word.getType() << std::endl;
 }

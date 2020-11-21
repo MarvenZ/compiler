@@ -9,6 +9,7 @@ typedef const std::string& LINEOFCODE, TEXT;
 typedef std::string string;
 typedef enum tp
 {
+    ASSI,
     NUM,
     ID,
     STRING,
@@ -33,13 +34,14 @@ typedef enum tp
     AND,
     OR,
     NOT,
+    COL
 
 }tokenType;
 
 
 const TEXT singleOper = "+-*/%><()[]:,;=!"; // '!' is not an operator
 const TEXT multiOper = "==>=<=!=";
-std::map <string, tokenType> letterOper = 
+const std::map <string, tokenType> letterOper = 
 { 
     {"and",tokenType::AND},
     {"or",tokenType::OR },

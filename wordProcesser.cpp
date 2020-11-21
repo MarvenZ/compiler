@@ -4,7 +4,6 @@
 wordProcesser::wordProcesser(LINEOFCODE word):
     value(word)
 {
-    
     if (word[0] == '\"')
     {
         type = tokenType::STRING;
@@ -15,19 +14,25 @@ wordProcesser::wordProcesser(LINEOFCODE word):
         type = tokenType::NUM;
     }
 
+    if (word[0] == '=')
+    {
+        type = tokenType::ASSI;
+    }
+
     if (word[0] == '_')
     {
         type = tokenType::ID;
     }
 
-    if (isalpha(word[0]) )
+    if (isalpha(word[0]))
     {
         if (letterOper.find(word) != letterOper.end())
-            type = letterOper[word];
+            type = letterOper.at(word);
         else
             type = tokenType::ID;
             
     }
+
     if (word[0] == '+')
     {
         type = tokenType::ADD;
@@ -64,8 +69,6 @@ wordProcesser::wordProcesser(LINEOFCODE word):
     {
         type = tokenType::RBR;
     }
-
-
 
 }
 
